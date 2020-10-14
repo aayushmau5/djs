@@ -1,0 +1,24 @@
+{
+  "name": "djs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aayushmau5/djs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aayushmau5/djs/issues"
+  },
+  "homepage": "https://github.com/aayushmau5/djs#readme",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "eslint": "^7.11.0"
+  }
+}
