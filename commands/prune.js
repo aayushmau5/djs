@@ -1,6 +1,8 @@
 module.exports = {
     name: 'prune',
-    description: 'Delete the given number of messages',
+	description: 'Delete the given number of messages',
+	args: true,
+	usage: '<number>',
     execute(message, args) {
 		const amount = parseInt(args[0]);
 		if(isNaN(amount)) {

@@ -23,14 +23,26 @@ client.on('message', (message) => {
 	if(!message.content.startsWith(prefix) | message.author.bot) return;
 
 	const args = message.content.slice(prefix.length).trim().split(/ +/);
-	const command = args.shift().toLowerCase();
+	const commandName = args.shift().toLowerCase();
+	
+	const command = client.commands.get(commandName) || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-	if(!client.commands.has(command)) {
+	if(!command) {
 		return message.channel.send('Sorry, I Don\'t Know that Command.');
 	}
 
+	if(command.args && !args.length) {
+		let reply = `You didn't provide any argumnets, ${message.author}`;
+
+		if(command.usage) {
+			reply += `\nThe proper usage would be: \`${prefix}${command.name} ${command.usage}\``;
+		}
+
+		message.channel.send(reply);
+	}
+
 	try {
-		client.commands.get(command).execute(message, args);
+		command.execute(message, args);
 	} catch(err) {
 		console.log(err);
 		message.reply('There was an error executing the command.');
